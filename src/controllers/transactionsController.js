@@ -3,12 +3,6 @@ import {connectDB} from '../config/db.js'
 async function getTransactionByUserId(req,res) {
     try {
         const { userId } = req.params;
-        const userExists = await connectDB`
-            SELECT 1 FROM transactions WHERE user_id = ${req.params.user_id} LIMIT 1
-        `;
-        if (userExists.length === 0) {
-            return res.status(404).json({ message: "User does not exist" });
-        }
         const transactions = await connectDB`
             SELECT * FROM transactions WHERE user_id = ${userId} ORDER BY created_at DESC
         `;

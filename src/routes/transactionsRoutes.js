@@ -3,7 +3,7 @@ import { getTransactionByUserId, createTransaction, deleteTransaction, getSummar
 
 const router = express.Router();
 
-router.get("/:user_id", getTransactionByUserId)
+router.get("/:userId", getTransactionByUserId)
 
 router.post("/",createTransaction)
 
